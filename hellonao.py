@@ -15,10 +15,21 @@ def hello(bot, update):
     tts = ALProxy("ALTextToSpeech", NAO_IP, NAO_PORT)
     tts.say(msg)
 
-
+def say(bot, update):
+    txt = '{}'.format()
+		
+def echo(bot, update):
+    txt = update.message.text[6:]
+    update.message.reply_text(txt)
+    
+    tts = ALProxy("ALTextToSpeech", NAO_IP, NAO_PORT)
+    tts.say(txt)
+    
 updater = Updater(TOKEN)
 
 updater.dispatcher.add_handler(CommandHandler('hello', hello))
+updater.dispatcher.add_handler(CommandHandler('say', say))
+updater.dispatcher.add_handler(CommandHandler('echo', echo))
 
 updater.start_polling()
 updater.idle()
