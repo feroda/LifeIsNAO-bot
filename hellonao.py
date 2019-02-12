@@ -23,7 +23,7 @@ def echo(bot, update):
     update.message.reply_text(txt)
     
     tts = ALProxy("ALTextToSpeech", NAO_IP, NAO_PORT)
-    tts.say(txt)
+    tts.say(txt.encode("utf-8"))
     
 updater = Updater(TOKEN)
 
